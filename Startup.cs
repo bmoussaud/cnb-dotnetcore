@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+
 namespace aspnet
 {
     public class Startup
@@ -26,23 +27,10 @@ namespace aspnet
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
             app.UseRouting();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync(@"<!DOCTYPE html>
-<html>
-  <head>
-    <title>Powered By Paketo Buildpacks</title>
-  </head>
-  <body>
-    <img style=""display: block; margin-left: auto; margin-right: auto; width: 50%;"" src=""https://paketo.io/images/paketo-logo-full-color.png""></img>
-  </body>
-</html>");
-                });
-            });
+            
         }
     }
 }
